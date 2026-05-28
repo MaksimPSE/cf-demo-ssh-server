@@ -1,0 +1,32 @@
+{
+  "name": "ssh-server",
+  "main": "src/index.js",
+  "compatibility_date": "2026-05-28",
+  "account_id": "531453e514d4dd7c94e710a1f5354bc6",
+
+  "containers": [
+    {
+      "class_name": "SSHContainer",
+      // Build from local Dockerfile — no Docker Hub image needed
+      "image": "./Dockerfile",
+      "max_instances": 1,
+      "instance_type": "basic"
+    }
+  ],
+
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "SSHContainer",
+        "name": "SSH_SERVER"
+      }
+    ]
+  },
+
+  "migrations": [
+    {
+      "new_sqlite_classes": ["SSHContainer"],
+      "tag": "v1"
+    }
+  ]
+}
