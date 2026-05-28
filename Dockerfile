@@ -27,6 +27,7 @@ RUN echo "maksim@cloudflare.com" > /etc/ssh/auth_principals/admin
 # MOTD
 RUN printf '\n  Cloudflare Zero Trust SSH\n  Authenticated via short-lived certificate\n  No passwords. No static keys.\n\n' > /etc/motd
 
+# SSH port
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D", "-e"]
