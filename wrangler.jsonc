@@ -7,10 +7,16 @@
   "containers": [
     {
       "class_name": "SSHContainer",
-      // Build from local Dockerfile — no Docker Hub image needed
       "image": "./Dockerfile",
       "max_instances": 1,
-      "instance_type": "basic"
+      "instance_type": "basic",
+      // Native Cloudflare Container SSH — connect with: wrangler containers ssh <instance_id>
+      "authorized_keys": [
+        {
+          "name": "maksim-demo",
+          "public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH0Gt0YnIGE3yIp/eJmFkE06czlOukzav8DRujZriRZo maksim@demo-ssh"
+        }
+      ]
     }
   ],
 
