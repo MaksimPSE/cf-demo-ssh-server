@@ -1,0 +1,20 @@
+Port 22
+ListenAddress 0.0.0.0
+
+# Trust Cloudflare SSH CA — short-lived certs only
+TrustedUserCAKeys /etc/ssh/cloudflare_ca.pub
+
+# No passwords, no static keys
+PasswordAuthentication no
+PubkeyAuthentication yes
+ChallengeResponseAuthentication no
+
+# Map certificate principal to local user
+AuthorizedPrincipalsFile /etc/ssh/auth_principals/%u
+
+# Hardening
+PermitRootLogin no
+X11Forwarding no
+PrintMotd yes
+AcceptEnv LANG LC_*
+UsePAM yes
