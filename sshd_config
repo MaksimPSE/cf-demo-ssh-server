@@ -9,20 +9,18 @@ HostKey /etc/ssh/ssh_host_ed25519_key
 TrustedUserCAKeys /etc/ssh/cloudflare_ca.pub
 AuthorizedPrincipalsFile /etc/ssh/auth_principals/%u
 
-# Auth
+# Auth — no passwords, CA certs only
 PasswordAuthentication no
 PubkeyAuthentication yes
 ChallengeResponseAuthentication no
 KbdInteractiveAuthentication no
 UsePAM no
 
-# No privilege separation — required in containers
-UsePrivilegeSeparation no
-
+# Hardening
 PermitRootLogin no
 X11Forwarding no
 PrintMotd yes
 AcceptEnv LANG LC_*
 
-# Logging to stderr (visible in container logs)
+# Debug logging to stderr — visible in container logs
 LogLevel DEBUG3
