@@ -1,31 +1,28 @@
 Port 22
 ListenAddress 0.0.0.0
 
-# Host keys (generated during image build)
 HostKey /etc/ssh/ssh_host_rsa_key
 HostKey /etc/ssh/ssh_host_ecdsa_key
 HostKey /etc/ssh/ssh_host_ed25519_key
 
-# Trust Cloudflare SSH CA for short-lived certs
+# Cloudflare SSH CA
 TrustedUserCAKeys /etc/ssh/cloudflare_ca.pub
-
-# Map certificate principal to local user
 AuthorizedPrincipalsFile /etc/ssh/auth_principals/%u
 
-# No passwords, no static keys
+# Auth
 PasswordAuthentication no
 PubkeyAuthentication yes
 ChallengeResponseAuthentication no
 KbdInteractiveAuthentication no
+UsePAM no
 
-# Hardening
+# No privilege separation — required in containers
+UsePrivilegeSeparation no
+
 PermitRootLogin no
 X11Forwarding no
 PrintMotd yes
 AcceptEnv LANG LC_*
 
-# PAM disabled — simpler for container
-UsePAM no
-
-# Privilege separation
-UsePrivilegeSeparation sandbox
+# Logging to stderr (visible in container logs)
+LogLevel DEBUG3
