@@ -10,6 +10,7 @@
       "image": "./Dockerfile",
       "max_instances": 1,
       "instance_type": "basic",
+      // sshd on 2222 — containers can't bind port 22 (requires root/CAP_NET_BIND_SERVICE)
       // Native Cloudflare Container SSH — connect with: wrangler containers ssh <instance_id>
       "ssh": { "enabled": true },
       "authorized_keys": [

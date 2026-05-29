@@ -10,7 +10,7 @@ import { Container, getContainer } from "@cloudflare/containers";
 // Or via WARP + Access for Infrastructure targets.
 
 export class SSHContainer extends Container {
-  defaultPort = 22;
+  defaultPort = 2222;
 
   // Keep SSH server alive indefinitely — it's an always-on service
   sleepAfter = "24h";

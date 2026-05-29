@@ -33,7 +33,7 @@ RUN printf '\n  Cloudflare Zero Trust SSH\n  No passwords. No static keys.\n\n' 
 # Validate config at build time
 RUN sshd -t && echo "sshd config OK"
 
-EXPOSE 22
+EXPOSE 2222
 
 # Run sshd with debug output so errors are visible in container logs
 CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
